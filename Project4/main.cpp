@@ -14,10 +14,10 @@
 #include "functions.h"
 
 using namespace std;
-using namespace std::chrono;
+using namespace std::chrono; //needed to get the running times of the algorithms
 
 int main() {
-    bool running = true;
+    bool running = true; //keeps the loop running
     int menuOption, n, k, n1, m, binaryInt;
     string binaryString, intString;
     
@@ -39,25 +39,26 @@ int main() {
                 cin >> k;
                 
                 cout << "Kth bit set number = ";
-                cout << KBit(n,k) << endl;
+                cout << KBit(n,k) << endl; //kBit function made to get the k-bit binary represenatation
                 
                 
                 break;
             case 2:
                 cout << "Please input a string of 1s and 0s to be interpreted as a binary number: " << endl;
-                cin >> binaryInt;
-                cout << "Decimal Value of " << binaryInt << " is : " << BinaryToDec(binaryInt) << endl;
+                cin >> binaryInt; //gets binary numbers
+                cout << "Decimal Value of " << binaryInt << " is : " << BinaryToDec(binaryInt) << endl; //conversion occurs here
                 break;
             case 3:{
                 cout << "Enter a comma separated list of integers" << endl;
                 cin.ignore();
                 getline(cin, intString);
                 
+                /*Getting rid of the commas and making the array of integers*/
                 string noSpaces;
                 int numCommas = 1;
                 for (int i = 0; i < intString.length(); i++){
                     if (intString[i] == ',') {
-                        numCommas++;
+                        numCommas++; //counting the amount of commas
                     }
                     if (intString[i] != ' ') {
                         noSpaces += intString[i];
@@ -69,7 +70,7 @@ int main() {
                 string temp;
                 int x = 0;
                 int intArray[numCommas];
-                
+                //array made here 
                 while (getline(ss, temp, ',')) {
                     intArray[x] = stoi(temp);
                     x++;
@@ -98,10 +99,11 @@ int main() {
                 srand(time(0));
                 int randArray[n1];
                 
-                for (int i = 0; i < n; i++) {
+                for (int i = 0; i < n1; i++) {
                     int r = rand() % m;
                     randArray[i] = r;
                 }
+                
                 
                 auto start = high_resolution_clock::now(); //start time
                 radixSort(randArray, n1);
@@ -113,17 +115,25 @@ int main() {
                     cout << "Radix Sorted Array: ";
                     printArray(randArray, n1);//print the arrays
                 }
+                
+                srand(time(0));
+                int randArray2[n1];
+                
+                for (int i = 0; i < n1; i++) {
+                    int r = rand() % m;
+                    randArray2[i] = r;
+                }
                     
                 
                 auto start1 = high_resolution_clock::now(); //start time
-                quickSort(randArray, 0, n1);
+                quickSort(randArray2, 0, n1);
                 auto stop1 = high_resolution_clock::now(); //end time
 
                 auto duration1 = duration_cast<microseconds>(stop1 - start1);
                 
                 if (n <= 100){
                     cout << "QuickSort array: " ;
-                    printArray(randArray, n1);//print the arrays
+                    printArray(randArray2, n1);//print the arrays
                 }
                 /* Printing out running times of the different algorithms*/
                 cout << "Running time for Radix Sort: " << duration.count()<< " milliseconds." <<  endl;

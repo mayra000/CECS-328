@@ -11,6 +11,9 @@
 
 #include <string>
 #include <sstream>
+#include <iostream>
+#include <cmath>
+#include <math.h>
 
 using namespace std;
 
@@ -41,27 +44,6 @@ int BinaryToDec(int n) {
         base *= 2;
     }
     return decNum;
-}
-
-/* Used in case 3 and 4*/
-void radixSort(int arr[], int n) {
-    int mx;
-    mx = getMax(arr, n);
-    
-    for (int exp = 1; mx/exp > 0; exp *= 10) {
-        countSort(arr, n, exp);
-    }
-}
-
-/*Used in case 3 and 4*/
-void quickSort(int arr[], int left, int right) {
-    if (left < right ) {
-        int piv = partition(arr, left, right);
-        
-        quickSort(arr, left, piv + 1);
-        quickSort(arr, piv + 1, right);
-        
-    }
 }
 
 /*
@@ -105,10 +87,19 @@ void countSort(int arr[], int n, int exp) {
         arr[i] = output[i];
 }
 
+/* Used in case 3 and 4*/
+void radixSort(int arr[], int n) {
+    int exp, mx;
+    mx = getMax(arr, n);
+    
+    for (int exp = 1; mx/exp > 0; exp *= 10) {
+        countSort(arr, n, exp);
+    }
+}
+
 /*Utilized in the quicksort algorithm as part of moving around the elements*/
-void swap(int *a, int *b) {
-    int temp;
-    temp = *a;
+void swap(int* a, int* b) {
+    int temp = *a;
     *a = *b;
     *b = temp;
 }
@@ -128,10 +119,21 @@ int partition(int arr[] , int left, int right) {
     return (index + 1);
 }
 
+/*Used in case 3 and 4*/
+void quickSort(int arr[], int left, int right) {
+    if (left < right ) {
+        int piv = partition(arr, left, right);
+        
+        quickSort(arr, left, piv - 1);
+        quickSort(arr, piv + 1, right);
+        
+    }
+}
+
 /* Function to print an array */
 void printArray(int arr[], int n) {
     for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
+        cout << arr[i] << " "; //formatting
     cout << endl;
 }
 
