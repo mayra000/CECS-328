@@ -100,6 +100,21 @@ void popElement(int arr[], int &size, int data) {
     
 }
 
+void heapSort(int arr[], int size){
+    /*Building heap. Rearranging the array*/
+    for (int i = size / 2 - 1; i >= 0; i--){
+        heapify(arr, size, i);
+    }
+    
+    for (int i = size - 1; i >= 0; i--){
+        /*moving root to the end*/
+        swap(arr[0], arr[i]);
+        /*Calling max heapify to reduce the heap*/
+        heapify(arr, i, 0);
+    }
+    
+}
+
 
 
 #endif /* heap_h */
