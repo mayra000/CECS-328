@@ -84,6 +84,22 @@ void insertElement(int arr[], int &size, int data) {
     build_minHeap(arr, data);
 }
 
+void popElement(int arr[], int &size, int data) {
+    int i;
+    for (i = 0; i < size; i++){
+        /*Looking for element in the array*/
+        if(arr[i] == data)
+            break;
+    if (i < size) {
+        size--;
+        for (int j = i; j < size; j++){
+            arr[j] = arr[j+1];
+        }
+    }
+    }
+    
+}
+
 
 
 #endif /* heap_h */
