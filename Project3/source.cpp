@@ -112,6 +112,8 @@ int main() {
                 }
                 else if (opt_pop == 2){
                     //pop element from option 2
+                    popElement(intArray, int arrSize, popElement);
+                    printHeap(intArray, (arrSize - 1));
                 }
                 else{
                     cout << "That was not a valid option" << endl;
