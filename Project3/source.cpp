@@ -103,13 +103,15 @@ int main() {
             } case 4:
                 cout << "Pop a single element from the heap created in either Option 1 or 2" << endl;
                 cout << "Please enter your option: " ;
-                int opt_pop;
-                cin >> opt_pop;
+                int opt_1, popElement = 0;
+                cin >> opt_1;
+                cout << "Please enter the number you would like to pop: ";
+                cin >> popElement;
                 if (opt_pop == 1){
-                    
+                    //pop element from option 1
                 }
                 else if (opt_pop == 2){
-                    
+                    //pop element from option 2
                 }
                 else{
                     cout << "That was not a valid option" << endl;
