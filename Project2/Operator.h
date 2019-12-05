@@ -8,9 +8,11 @@
 #include "Operator.h"
 #include "parseTree.h"
 #include <iostream>
+#include <cstring>
+#include <cstdlib>
 #include <cmath>
 
-#include <vector>
+#include <array>
 
 
 using namespace std;
@@ -30,7 +32,7 @@ int main() {
         switch (userin) {
             case 1:{
                 cout << "Insert Arithmetic Expressions: ";
-                cin.ignore();
+                //cin.ignore();
                 getline(cin, aExpression);
                 
                 /* Getting rid of the spaces in the string */
